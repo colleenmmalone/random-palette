@@ -1,13 +1,13 @@
+import Palette from "~/pages/palette";
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Random Palette Maker" },
+    { name: "description", content: "Create a random color palette with two clicks!" },
   ];
 }
 
 export default function Home() {
-  return <Welcome />;
+  return <Palette />
 }

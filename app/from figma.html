@@ -1,0 +1,347 @@
+import { useState } from "react";
+import image2 from "./image-2.png";
+import image from "./image.svg";
+import vector2 from "./vector-2.svg";
+import vector from "./vector.svg";
+
+export const HomePalette = (): JSX.Element => {
+  const [selectedColorFamily, setSelectedColorFamily] =
+    useState<string>("All Colors");
+
+  const mainCharacters = [
+    { color: "#da67a7", label: "Primary" },
+    { color: "#6ea9e5", label: "Secondary" },
+    { color: "#b8e871", label: "Tertiary" },
+  ];
+
+  const supportingCastPrimary = [
+    "#29091a",
+    "#711d49",
+    "#b83177",
+    "#d85ba0",
+    "#e7a0c9",
+    "#f9e9f2",
+  ];
+
+  const supportingCastSecondary = [
+    "#07192b",
+    "#154679",
+    "#2374c6",
+    "#5298df",
+    "#9bc4ed",
+    "#e9f2fb",
+  ];
+
+  const supportingCastTertiary = [
+    "#1d2b07",
+    "#517a13",
+    "#85c920",
+    "#a7e24f",
+    "#ccee9a",
+    "#f4fbe9",
+  ];
+
+  const colorInfo = [
+    { label: "Hex:", value: "#EB5BAB" },
+    { label: "RGB:", value: "rgb(235, 91, 171)" },
+    { label: "HSL:", value: "hsl(327, 78%, 64%)" },
+  ];
+
+  const handleGetRandomColor = () => {
+    // Random color generation logic would go here
+    console.log("Get Random Color clicked");
+  };
+
+  const handleGeneratePalette = () => {
+    // Palette generation logic would go here
+    console.log("Generate Palette clicked");
+  };
+
+  const handleExportPalette = () => {
+    // Export palette logic would go here
+    console.log("Export Palette clicked");
+  };
+
+  const handleColorFamilyChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedColorFamily(e.target.value);
+  };
+
+  return (
+    <div className="bg-white w-full min-w-[430px] min-h-[2424px] relative">
+      <header className="absolute top-0 left-0 w-[430px] h-[293px] bg-[#da66a8]" />
+
+      <section className="absolute top-44 left-[95px] w-60 h-[234px] bg-[#fffbec] rounded-[20px] border border-solid border-[#b69e8a]" />
+
+      <button
+        onClick={handleGetRandomColor}
+        className="inline-flex items-center justify-center gap-2.5 p-2.5 absolute top-[217px] left-[148px] bg-black rounded cursor-pointer hover:bg-gray-800 transition-colors"
+        aria-label="Get Random Color"
+      >
+        <span className="relative w-fit mt-[-1.00px] [font-family:'Inter-Regular',Helvetica] font-normal text-white text-xs tracking-[0] leading-[normal]">
+          Get Random Color
+        </span>
+      </button>
+
+      <div className="absolute top-[283px] left-[136px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-sm tracking-[0] leading-[normal]">
+        {colorInfo.map((info, index) => (
+          <p key={index} className="m-0">
+            {info.label}&nbsp;&nbsp; {info.value}
+          </p>
+        ))}
+      </div>
+
+      <main className="flex flex-col w-[370px] items-center gap-[30px] absolute top-[428px] left-[30px]">
+        <section className="flex flex-col items-center gap-4 relative self-stretch w-full flex-[0_0_auto]">
+          <p className="relative self-stretch mt-[-1.00px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-xs text-center tracking-[0] leading-[normal]">
+            Like what you see?
+          </p>
+
+          <button
+            onClick={handleGeneratePalette}
+            className="inline-flex items-center justify-center gap-2.5 p-2.5 relative flex-[0_0_auto] bg-black rounded cursor-pointer hover:bg-gray-800 transition-colors"
+            aria-label="Generate Palette"
+          >
+            <span className="relative w-fit mt-[-1.00px] [font-family:'Inter-Regular',Helvetica] font-normal text-white text-xs tracking-[0] leading-[normal]">
+              Generate Palette
+            </span>
+          </button>
+        </section>
+
+        <hr className="relative self-stretch w-full h-px bg-[#b69f8a] border-0" />
+
+        <h2 className="relative self-stretch [font-family:'Inter-SemiBold',Helvetica] font-semibold text-black text-lg text-center tracking-[0] leading-[normal]">
+          Your Main Characters
+        </h2>
+
+        <section className="flex items-center justify-between relative self-stretch w-full flex-[0_0_auto]">
+          {mainCharacters.map((character, index) => (
+            <article
+              key={index}
+              className={`flex flex-col ${
+                index === 0
+                  ? "w-[109px]"
+                  : index === 1
+                    ? "w-[107px]"
+                    : "w-[110px]"
+              } items-center justify-center gap-1.5 pt-0 pb-1.5 px-0 relative ${
+                index === 0
+                  ? "mt-[-1.00px] mb-[-1.00px] ml-[-1.00px]"
+                  : index === 2
+                    ? "mt-[-1.00px] mb-[-1.00px] mr-[-1.00px]"
+                    : "mt-[-1.00px] mb-[-1.00px]"
+              } rounded-md overflow-hidden border border-solid border-black`}
+            >
+              <div
+                className="relative self-stretch w-full h-[85px]"
+                style={{ backgroundColor: character.color }}
+                aria-label={`${character.label} color: ${character.color}`}
+              />
+              <span className="relative self-stretch [font-family:'Inter-Regular',Helvetica] font-normal text-black text-xs text-center tracking-[0] leading-[normal]">
+                {character.label}
+              </span>
+            </article>
+          ))}
+        </section>
+
+        <hr className="relative self-stretch w-full h-px bg-[#b69f8a] border-0" />
+
+        <h2 className="relative self-stretch [font-family:'Inter-SemiBold',Helvetica] font-semibold text-black text-lg text-center tracking-[0] leading-[normal]">
+          Your Supporting Cast
+        </h2>
+
+        <section className="flex items-center gap-2 relative self-stretch w-full flex-[0_0_auto]">
+          {supportingCastPrimary.map((color, index) => (
+            <div
+              key={index}
+              className="relative flex-1 grow h-[90px] rounded-md"
+              style={{ backgroundColor: color }}
+              aria-label={`Supporting color: ${color}`}
+            />
+          ))}
+        </section>
+
+        <section className="flex items-center gap-2 relative self-stretch w-full flex-[0_0_auto]">
+          {supportingCastSecondary.map((color, index) => (
+            <div
+              key={index}
+              className="relative flex-1 grow h-[90px] rounded-md"
+              style={{ backgroundColor: color }}
+              aria-label={`Supporting color: ${color}`}
+            />
+          ))}
+        </section>
+
+        <section className="flex items-center gap-2 relative self-stretch w-full flex-[0_0_auto]">
+          {supportingCastTertiary.map((color, index) => (
+            <div
+              key={index}
+              className="relative flex-1 grow h-[90px] rounded-md"
+              style={{ backgroundColor: color }}
+              aria-label={`Supporting color: ${color}`}
+            />
+          ))}
+        </section>
+
+        <hr className="relative self-stretch w-full h-px bg-[#b69f8a] border-0" />
+
+        <h2 className="relative self-stretch [font-family:'Inter-SemiBold',Helvetica] font-semibold text-black text-lg text-center tracking-[0] leading-[normal]">
+          Your Typography
+        </h2>
+
+        <article className="flex flex-col w-[370px] items-start gap-3 p-[30px] relative flex-[0_0_auto] bg-[#f9e9f2] rounded-[20px] border border-solid border-[#e7a0c9]">
+          <h3 className="relative self-stretch mt-[-1.00px] [font-family:'Inter-Bold',Helvetica] font-bold text-[#29091a] text-lg tracking-[0] leading-[normal]">
+            This is what your text looks like
+          </h3>
+          <p className="relative self-stretch [font-family:'Inter-Regular',Helvetica] font-normal text-[#29091a] text-base tracking-[0] leading-[normal]">
+            If you were to have a block of text in light mode, it would look
+            something like this. Dark text on a pale background with just enough
+            of a hint of color from your primary hue.
+          </p>
+        </article>
+
+        <article className="flex flex-col w-[370px] items-start gap-3 p-[30px] relative flex-[0_0_auto] bg-[#29091a] rounded-[20px]">
+          <h3 className="relative self-stretch mt-[-1.00px] [font-family:'Inter-Bold',Helvetica] font-bold text-[#f9e9f2] text-lg tracking-[0] leading-[normal]">
+            And here is how it looks
+          </h3>
+          <p className="relative self-stretch [font-family:'Inter-Regular',Helvetica] font-normal text-[#f9e9f2] text-base tracking-[0] leading-[normal]">
+            in dark mode. This is for the edgy types. Or developers. Nobody
+            likes to code on a bright, white screen. Or it&apos;s useful to draw
+            attention to a particular bock of text.
+          </p>
+        </article>
+
+        <hr className="relative self-stretch w-full h-px bg-[#b69f8a] border-0" />
+
+        <h2 className="relative self-stretch [font-family:'Inter-SemiBold',Helvetica] font-semibold text-black text-lg text-center tracking-[0] leading-[normal]">
+          Your Calls to Action
+        </h2>
+
+        <button
+          className="flex w-60 items-center justify-center gap-2.5 p-2.5 relative flex-[0_0_auto] bg-[#b83177] rounded cursor-pointer hover:bg-[#a02866] transition-colors"
+          aria-label="Default button"
+        >
+          <span className="relative w-[68px] mt-[-1.00px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-white text-lg text-center tracking-[0] leading-[normal]">
+            Default
+          </span>
+        </button>
+
+        <button
+          className="flex w-60 items-center justify-center gap-2.5 p-2.5 relative flex-[0_0_auto] rounded border border-solid border-[#b83177] cursor-pointer hover:bg-[#b83177] hover:bg-opacity-10 transition-colors"
+          aria-label="Outline button"
+        >
+          <span className="relative w-fit mt-[-1.00px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#b83177] text-lg text-center tracking-[0] leading-[normal]">
+            Outline
+          </span>
+        </button>
+
+        <button
+          className="flex w-60 items-center justify-center gap-2.5 p-2.5 relative flex-[0_0_auto] bg-[#f9e9f2] rounded border border-solid border-[#e7a0c9] cursor-not-allowed"
+          disabled
+          aria-label="Disabled button"
+        >
+          <span className="relative w-fit mt-[-1.00px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#e7a0c9] text-lg text-center tracking-[0] leading-[normal]">
+            Disabled
+          </span>
+        </button>
+
+        <button
+          className="flex w-60 items-center justify-center gap-2.5 p-2.5 relative flex-[0_0_auto] rounded cursor-pointer hover:bg-[#b83177] hover:bg-opacity-10 transition-colors"
+          aria-label="Ghost button"
+        >
+          <span className="relative w-fit mt-[-1.00px] [font-family:'Inter-SemiBold',Helvetica] font-semibold text-[#b83177] text-lg text-center tracking-[0] leading-[normal]">
+            Ghost
+          </span>
+        </button>
+
+        <hr className="relative self-stretch w-full h-px bg-[#b69f8a] border-0" />
+
+        <section className="flex flex-col items-center gap-4 relative self-stretch w-full flex-[0_0_auto]">
+          <p className="relative self-stretch mt-[-1.00px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-xs text-center tracking-[0] leading-[normal]">
+            Do you love it?
+          </p>
+
+          <button
+            onClick={handleExportPalette}
+            className="inline-flex items-center justify-center gap-2.5 p-2.5 relative flex-[0_0_auto] bg-black rounded cursor-pointer hover:bg-gray-800 transition-colors"
+            aria-label="Export Palette"
+          >
+            <span className="relative w-fit mt-[-1.00px] [font-family:'Inter-Regular',Helvetica] font-normal text-white text-xs tracking-[0] leading-[normal]">
+              Export Palette
+            </span>
+          </button>
+        </section>
+
+        <p className="relative w-[370px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-xs text-center tracking-[0] leading-[normal]">
+          Don&apos;t forget to take a screenshot and share!
+        </p>
+      </main>
+
+      <header className="flex w-[280px] items-center justify-center gap-2.5 px-4 py-2.5 absolute top-0 left-[calc(50.00%_-_140px)] bg-[#fffbec] rounded-[0px_0px_8px_8px] border border-solid border-[#b69f8a]">
+        <h1 className="relative w-fit mt-[-1.00px] [font-family:'Inter-Bold',Helvetica] font-bold text-black text-lg tracking-[0] leading-[normal]">
+          Random Palette Generator
+        </h1>
+      </header>
+
+      <footer className="flex w-[280px] items-center justify-center gap-2.5 px-4 py-2.5 absolute left-[calc(50.00%_-_140px)] bottom-0 bg-[#fffbec] rounded-[8px_8px_0px_0px] border border-solid border-[#b69f8a]">
+        <p className="relative w-fit mt-[-1.00px] [font-family:'Inter-Bold',Helvetica] font-bold text-black text-lg tracking-[0] leading-[normal]">
+          Made by Colleen
+        </p>
+      </footer>
+
+      <h2 className="absolute top-[88px] left-[calc(50.00%_-_81px)] [-webkit-text-stroke:1px_#000000] [font-family:'Inter-Bold',Helvetica] font-bold text-white text-[32px] tracking-[0] leading-[normal]">
+        Party Pink
+      </h2>
+
+      <button
+        className="absolute top-[317px] left-[300px] w-4 h-4 flex cursor-pointer hover:opacity-80 transition-opacity"
+        aria-label="Copy color"
+      >
+        <img className="flex-1 w-[15.33px]" alt="Copy" src={vector2} />
+      </button>
+
+      <button
+        className="top-[300px] left-[285px] absolute w-4 h-4 flex cursor-pointer hover:opacity-80 transition-opacity"
+        aria-label="Share color"
+      >
+        <img className="flex-1 w-[15.33px]" alt="Share" src={vector} />
+      </button>
+
+      <button
+        className="top-[284px] left-[241px] absolute w-4 h-4 flex cursor-pointer hover:opacity-80 transition-opacity"
+        aria-label="Favorite color"
+      >
+        <img className="flex-1 w-[15.33px]" alt="Favorite" src={image} />
+      </button>
+
+      <img
+        className="absolute top-[354px] left-[150px] w-[123px] h-11 aspect-[2.8] object-cover"
+        alt="Color family selector"
+        src={image2}
+      />
+
+      <label
+        htmlFor="color-family-select"
+        className="absolute top-[344px] left-[155px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-xs tracking-[0] leading-[normal]"
+      >
+        Specify color family?
+      </label>
+
+      <select
+        id="color-family-select"
+        value={selectedColorFamily}
+        onChange={handleColorFamilyChange}
+        className="absolute top-[354px] left-[150px] w-[123px] h-11 opacity-0 cursor-pointer"
+        aria-label="Select color family"
+      >
+        <option value="All Colors">All Colors</option>
+        <option value="Red">Red</option>
+        <option value="Orange">Orange</option>
+        <option value="Yellow">Yellow</option>
+        <option value="Green">Green</option>
+        <option value="Blue">Blue</option>
+        <option value="Purple">Purple</option>
+        <option value="Pink">Pink</option>
+      </select>
+    </div>
+  );
+};
