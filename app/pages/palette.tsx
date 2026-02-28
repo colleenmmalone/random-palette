@@ -141,13 +141,13 @@ export const Palette: React.FC = () => {
     // Retrieved 2026-02-27, License - CC BY-SA 4.0
 
     const DownloadButton = () => {
-        const file = new Blob([JSON.stringify(palette)], { type: 'text/plain' });
+        const file = new Blob([JSON.stringify(palette)], { type: 'json' });
 
         return (
             <button
                 className="bg-black text-white rounded px-4 py-2 active:opacity-80"
             >
-                <a download="sample.json" target="_blank" rel="noreferrer" href={URL.createObjectURL(file)} style={{
+                <a download={`my-palette-${data?.hex || 'json'}.json`} target="_blank" rel="noreferrer" href={URL.createObjectURL(file)} style={{
                     textDecoration: "inherit",
                     color: "inherit",
                 }}>
@@ -206,7 +206,7 @@ export const Palette: React.FC = () => {
                 style={{ backgroundColor: randomColor || 'transparent' }}
             />
             {/* header  */}
-            <header className="absolute flex w-70 sm:w-80 items-center justify-center gap-2.5 px-4 py-2.5  top-0 left-[calc(50.00%_-_160px)] bg-[#fffbec] rounded-[0px_0px_8px_8px] border border-solid border-[#b69f8a]">
+            <header className="absolute flex w-70 sm:w-80 items-center justify-center gap-2.5 px-4 py-2.5  top-0  bg-[#fffbec] rounded-[0px_0px_8px_8px] border border-solid border-[#b69f8a]">
                 <h1 className=" w-fit font-bold text-black text-lg tracking-[0] leading-[normal]">
                     Random Palette Generator
                 </h1>
