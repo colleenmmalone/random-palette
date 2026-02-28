@@ -9,5 +9,5 @@
 
 html,
 body {
-  @apply bg-amber-50  text-gray-700 font-sans;
+  @apply bg-amber-50 text-gray-700 font-sans;
 }
